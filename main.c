@@ -14,7 +14,7 @@ void goldBach();
 
 int main(){
 
-	//setbuf(stdout, NULL);
+	setbuf(stdout, NULL);
 	evenSteven();
 	goldBach(firstInput);
 
