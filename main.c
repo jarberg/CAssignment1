@@ -10,12 +10,14 @@ float triangle();
 float FloatScan();
 void evenSteven();
 void goldBach();
+int primeCheck();
 
 int main(){
-	setbuf(stdout, NULL);
+	//setbuf(stdout, NULL);
 	//evenSteven();
-	//goldBach(firstInput);
-	triangle();
+	//printf("%d",primeCheck(4));
+	goldBach(100);
+	//triangle();
 }
 
 void evenSteven(){
@@ -52,52 +54,46 @@ int primeCheck(int n){
 	if (n == 1 || n==0){
 		return primecheck;
 	}
-	else{
-		for(i=2; i>=n/2; ++i)	{
-			if((n%i==0)){
-				primecheck=1;
-				break;
-			}
-		}
-		if (primecheck == 0){
-			return primecheck;
-		}
-		else{
-		  return primecheck;
+	for(i = 2; i <= n/2; ++i){
+		if(n%i == 0){
+			primecheck = 1;
+			break;
 		}
 	}
+	if (primecheck == 0)
+		return 1;
+	else
+		return 0;
 }
 
 void goldBach(int n){
 	int temp = n;
-	int count1;
-	int count2;
+	int count1=0;
+	int count2=0;
 
-	while(temp>1){
+	while(temp>-1){
 		int bool = 0;
-		for( count1 = 0; count1 < temp ; count1++ ){
-			if(bool==1){
-				break;
-			}
-			if(primeCheck(count1)==1){
-				for( count2 = 0; (count1+count2) <= temp ; count2++ ){
-					if(primeCheck(count2)==1){
-						if((count1+count2)==temp){
-							bool = 1;
-							break;
-						}
-						else{
-							bool =0;
-						}
-						if((count1+count2+1)>=temp){
-							break;
+		for( count1 = 0; count1+count2 < temp ; count1++ ){
+			if(bool!=1) {
+				if (primeCheck(count1)) {
+					for (count2 = 0; (count1 + count2) <= temp; count2++) {
+						if (primeCheck(count2)) {
+							if(count1+count2 == temp){
+								bool=1;
+								break;
+							}
 						}
 					}
 				}
 			}
+			else{
+				break;
+			}
+			count2 =0;
 		}
-		if(bool==3){
-			printf("%d \n",temp);
+		if(bool==0){
+			printf("%d",temp);
+			printf("\n");
 		}
 		temp--;
 	}
@@ -155,4 +151,37 @@ float FloatScan(){
 
 
 
+/*
+ 	int temp = n;
+	int count1;
+	int count2;
 
+	while(temp>1){
+		int bool = 0;
+		for( count1 = 0; count1 < temp ; count1++ ){
+			if(bool==1){
+				break;
+			}
+			if(primeCheck(count1)==1){
+				for( count2 = 0; (count1+count2) <= temp ; count2++ ){
+					if(primeCheck(count2)==1){
+						if((count1+count2)==temp){
+							bool = 1;
+							break;
+						}
+						else{
+							bool =0;
+						}
+						if((count1+count2+1)>=temp){
+							break;
+						}
+					}
+				}
+			}
+		}
+		if(bool==3){
+			printf("%d \n",temp);
+		}
+		temp--;
+	}
+ */
