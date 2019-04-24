@@ -6,25 +6,23 @@
 float tester[6]={0};
 int firstInput=10;
 
-
 float triangle();
-float scanners();
+float FloatScan();
 void evenSteven();
 void goldBach();
 
 int main(){
-
 	setbuf(stdout, NULL);
-	evenSteven();
-	goldBach(firstInput);
-
+	//evenSteven();
+	//goldBach(firstInput);
+	triangle();
 }
 
 void evenSteven(){
 	int i=1;
 	int check =0;
 	while(i){
-		i = (int) scanners();
+		i = (int) FloatScan();
 		if(check==0){
 			if(i>0){
 				firstInput = i;
@@ -51,7 +49,7 @@ void evenSteven(){
 int primeCheck(int n){
 	int i;
 	int primecheck=0;
-	if (n == 1|| n==0){
+	if (n == 1 || n==0){
 		return primecheck;
 	}
 	else{
@@ -107,18 +105,20 @@ void goldBach(int n){
 
 float triangle(){
 	printf("insert side variable a: ");
-	float A = scanners();
+	float A = FloatScan();
 	printf("insert side variable b: ");
-	float B = scanners();
+	float B = FloatScan();
 	printf("insert side variable c: ");
-	float C = scanners();
+	float C = FloatScan();
 
 	float angleA = acos((pow(B,2)+pow(C,2)-pow(A,2))/(2*B*C))*180.0/M_PI;
 	float angleB = acos((pow(A,2)+pow(C,2)-pow(B,2))/(2*A*C))*180.0/M_PI;
 	float angleC = acos((pow(A,2)+pow(B,2)-pow(C,2))/(2*B*A))*180.0/M_PI;
 
+
+
 	if( A!=0 && B != 0 & C!=0 && angleA != 0 || angleB != 0 || angleC!= 0){
-		if((pow(A,2)+pow(B,2)==pow(C,2) || angleA==90 || angleB == 90 || angleC==90)){
+		if((abs((A*A+B*B)/(C*C)-1) <= 0.01 || abs((A*A+C*C)/(B*B)-1) <= 0.01 || abs((C*C+B*B)/(A*A)-1) <= 0.01)){
 			printf("Trekanten er retvinklet");
 		}
 		else{
@@ -130,12 +130,13 @@ float triangle(){
 					printf("Trekanten er ligebenet");
 				}
 			}
-			else if(angleA>90 || angleB > 90 || angleC>90){
-				printf("Trekanten er stump");
-			}
-			else if(angleA<90 && angleB < 90 && angleC<90) {
-				printf("Trekanten er spids");
-			}
+		}
+		printf("\n");
+		if(angleA>90 || angleB > 90 || angleC>90){
+			printf("Trekanten er stump");
+		}
+		else if(angleA<90 && angleB < 90 && angleC<90) {
+			printf("Trekanten er spids");
 		}
 	}
 	else{
@@ -144,7 +145,7 @@ float triangle(){
 	printf("\n");
 }
 
-float scanners(){
+float FloatScan(){
 	float float1;
 	scanf("%f", &float1);
 	return float1;
