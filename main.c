@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define M_PI acos(-1.0)
+//#define M_PI acos(-1.0)
 
 float tester[6]={0};
 int firstInput=10;
@@ -122,13 +122,15 @@ float triangle(){
 			printf("Trekanten er retvinklet");
 		}
 		else{
-			if(A==B){
-				if(A==C){
-					printf("Trekanten er ligesidet");
-				}
-				else{
-					printf("Trekanten er ligebenet");
-				}
+			printf("Trekanten er vilkårlig");
+		}
+		if(A==B){
+			printf("\n");
+			if(A==C){
+				printf("Trekanten er ligesidet");
+			}
+			else{
+				printf("Trekanten er ligebenet");
 			}
 		}
 		printf("\n");
